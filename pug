@@ -1,0 +1,175 @@
+mongodb
+user:maxpwd:aruna@123
+conn str::mongodb+srv://max:aruna@123@cluster0.e2rto.mongodb.net/nodejs?retryWrites=true&w=majority
+////................404.pug with out layout
+<!--html(lang="en")
+        head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title page not found
+        link(rel="stylesheet", href="/css/main.css")
+        
+    body 
+        header.main-header
+            nav.main-header-nav
+                ul.main-header-itemlist
+                    li.main-header-item 
+                        a(href="/") shop
+                    li.main-header-item 
+                        a(href="/admin/add-pro") add product
+        h1 Page Not Found-->
+
+
+
+/////................................add-pro pug without layout
+<!--doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title #{pagetitle}
+        link(rel="stylesheet", href="/css/main.css")
+        link(rel="stylesheet", href="/css/pro.css")
+
+    body 
+        header.main-header
+            nav.main-header-nav
+                ul.main-header-itemlist 
+                    li.main-header-item
+                        a.active(href="/") shop     
+                    li.main-header-item
+                        a(href="/admin/add-pro") Add product
+        main
+            form.product-form(action="/admin/add-pro",method="POST")
+                .form-control
+                    lable(for="title") Title
+                    input(type="text",name="title")#title
+
+                button.btn(type="submit") add product -->
+
+
+
+////...................shop.pug without layout
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title #{docTitle}
+        link(rel="stylesheet", href="/css/main.css")
+        link(rel="stylesheet", href="/css/pro.css")
+
+    body
+        header.main-header
+            nav.main-header-nav
+                ul.main-header-itemlist 
+                    li.main-header-item
+                        a.active(href="/") shop     
+                    li.main-header-item
+                        a(href="/admin/add-pro") Add product
+        
+        main
+            if prods.length>0
+                .grid 
+                    each product in prods
+                        article.card.product-item
+                            header.card__header 
+                                h1.product_title #{product.title}
+                            div.card__image 
+                                img(src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9YPtHlc4n5Z6KlIQfHzNErszH0U_pHTsvlA&usqp=CAU",alt="A Book") 
+                            div.card__content
+                                h2.product_price $19.99
+                                p.product__description A very intresting product 
+                            .card_actions   
+                                button.btn Add to cart
+
+                    
+    
+//............................
+body{
+            padding:0;
+            margin:0;
+            font-family:sans-serif;
+
+        }
+        .main-header{
+            width:100%;
+            height:3.5rem;
+            background-color: #dd95cb;
+            padding:0 1.5rem;
+        }
+        main{
+            padding:1rem;
+        }
+        
+        .main-header-nav{
+            height:100%;
+            display:flex;
+            align-items: center;
+        }
+        .main-header-itemlist{
+            list-style:none;
+            margin:0;
+            padding:0;
+            display:flex;
+
+        }
+        .main-header-item{
+            padding:0 1rem;
+            margin:0;
+
+        }
+        .main-header-item a{
+            text-decoration:none;
+            color:#0e0d0d;
+
+        }
+
+        .main-header-item a:hover,
+        .main-header-item a:active,
+        .main-header-item a.active {
+            color:#2225e9;
+        }
+        .product-form{
+            width: 30rem;
+            max-width:90%;
+            margin:auto;
+
+        }
+        .form-control{
+            margin:1rem 0;
+        }
+        .form-control lable,
+        .form-control input {
+            display:block;
+            width:100%;
+
+        }
+        
+        .form-control input{
+            border:1px solid #cfcfcfd8;
+            font:inherit;
+            border-radius:2px;
+        
+        }
+        button{
+            font:inherit;
+            color:#1612e9;
+            border:1px solid #ca2626;
+            background:#eef1f1;
+            border-radius:3px;
+            cursor:pointer;
+
+
+        }
+        button:hover,
+        button:active{
+            background-color:#2225e9;
+            color:#ececf4;
+            
+        }
+
+    </style>///......main ..form
